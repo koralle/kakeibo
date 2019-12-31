@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>項目名</th>
+      <th>金額</th>
+      <th>日時</th>
+      <th>カテゴリー</th>
+      <th>収入/支出</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in balance %}
+      <tr>
+        <td>
+          {{ item.pk }}
+        </td>
+        <td>
+         <a href="{% url 'app:balance_detail' item.pk %}"> {{ item.item_name }} </a>
+        </td>
+        <td>
+          {{ item.amount }}
+        </td>
+        <td>
+          {{ item.registered_date }}
+        </td>
+        <td>
+          {{ item.category }}
+        </td>
+        <td>
+          {{ item.balance_type }}
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}
